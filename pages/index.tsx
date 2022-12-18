@@ -1,4 +1,4 @@
-import { Button, Container, Dropdown, Label, Message } from "semantic-ui-react";
+import { Button, Container, Dropdown, Image, Label, Message } from "semantic-ui-react";
 import { useState } from "react";
 import { predict } from "../services/predict";
 import { symptoms } from "../const/const";
@@ -19,15 +19,18 @@ export default function Home() {
         <Container
             style={{ width: "300px", height: "80vh", position: "relative" }}
         >
-            <div style={{ position: "absolute", top: "50%", width: "100%" }}>
+            <div style={{ position: "absolute", top: "40%", width: "100%" }}>
+                <Image src="/images/logo.png" style={{"width": "100px", "margin": "20px auto"}}></Image>
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                    <Label style={{ margin: "0" }}>Select your symptom: </Label>
+                    <Label style={{ margin: "0" }}>
+                        Lựa chọn các triệu chứng:{" "}
+                    </Label>
                     <Dropdown
                         deburr
                         multiple
                         search
                         selection
-                        placeholder="Symptom"
+                        placeholder="Triệu chứng"
                         onChange={(_, d) => {
                             console.log((d.value as string[]).join(","));
                             setSymptom((d.value as string[]).join(","));
@@ -42,12 +45,12 @@ export default function Home() {
                         onClick={handleClick}
                         style={{ margin: "20px 0" }}
                     >
-                        Predict
+                        Chẩn đoán
                     </Button>
                 </div>
-                <Label>Result: </Label>
+                <Label>Kết quả chẩn đoán: </Label>
                 <Message
-                    error={predictRes.includes("Error")}
+                    error={predictRes.includes("Lỗi!")}
                     style={{ margin: "0", padding: "0", height: "36px" }}
                 >
                     <p
