@@ -4,7 +4,7 @@ type Data = {
 }
 
 export const predict = async (inputs: string) => {
-    const data = await fetch('https://nmquan1910.pythonanywhere.com/predict', {
+    const data = await fetch('https://anprovip209.pythonanywhere.com/predict', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
